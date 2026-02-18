@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    quadratic q1(1, -6, 9);
+    quadratic q1(1, 6, 8.75);
     cout << q1.get_a() << endl;
     cout << q1.get_b() << endl;
     cout << q1.get_c() << endl;
