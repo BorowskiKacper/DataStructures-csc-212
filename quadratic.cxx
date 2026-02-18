@@ -5,6 +5,7 @@
 #include "quadratic.h"
 #include <vector>
 #include <cmath>
+#include <iostream>
 // namespace myMath
 // {
 quadratic::quadratic(double init_a, double init_b, double init_c)
@@ -114,6 +115,13 @@ std::vector<double> quadratic::get_roots() const
             answer.push_back(root1 < root2 ? root2 : root1); // larger root
         }
     }
+
+    std::cout << "In get_roots() \nLooping through each root:";
+    for (int i = 0; i < answer.size(); i++)
+    {
+        std::cout << "Index: " << i << " | Value: " << answer[i] << '\n';
+    }
+    std::cout << "That's all folks!\n";
     return answer;
 }
 
