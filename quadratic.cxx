@@ -7,7 +7,11 @@
 #include <cmath>
 
 #include <iostream>
+using std::cin;
 using std::cout;
+using std::endl;
+using std::istream;
+using std::ostream;
 
 namespace my_math
 {
@@ -146,6 +150,12 @@ namespace my_math
     bool operator!=(const quadratic &q1, const quadratic &q2)
     {
         return q1.get_a() != q2.get_a() || q1.get_b() != q2.get_b() || q1.get_c() != q2.get_c();
+    }
+
+    ostream &operator<<(ostream &outs, const quadratic &q)
+    {
+        outs << "(" << q.get_a() << "x^2) + (" << q.get_b() << "x) + (" << q.get_c() << ")" << endl;
+        return outs;
     }
 
 }

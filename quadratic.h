@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #ifndef QUADRATIC_H
 #define QUADRATIC_H
@@ -43,6 +44,15 @@ namespace my_math
         double getRoot2() const;
         // Precondition: The quadratic expression has at least one real root.
         // Postcondition: If there are two real roots, then this function returns the larger of the two roots. If every value of x is a real root, then this function returns 0.0.
+
+        // Friend functions for I/O
+        friend std::ostream &operator<<(std::ostream &outs, const quadratic &q);
+        // Precondition: None
+        // Postcondition: Prints the quadratic expression to the output stream.
+
+        // friend std::istream &operator>>(std::istream &ins, const quadratic &q);
+        // // Precondition: None
+        // // Postcondition: Reads three double values from input and sets them as coefficients (a, b, and c) of q.
 
     private:
         std::vector<double> getRoots() const;
