@@ -18,9 +18,11 @@ int main()
     quadratic q2(0, 0, 0);
 
     cout << "q1 == q2: " << (q1 == q2) << '\n';
+    cout << "q1 != q2: " << (q1 != q2) << '\n';
     q2.set_a(2.0);
     cout << "Update q2\n";
     cout << "q1 == q2: " << (q1 == q2) << '\n';
+    cout << "q1 != q2: " << (q1 != q2) << '\n';
 
     // q1.set_a(0.5);
     // q1.set_b(1.6);

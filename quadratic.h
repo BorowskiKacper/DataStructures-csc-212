@@ -64,6 +64,10 @@ namespace my_math
     // Precondition: None
     // Postcondition: Returns true if both quadratic objects contain identical coefficients.
 
+    bool operator!=(const quadratic &q1, const quadratic &q2);
+    // Precondition: None
+    // Postcondition: Returns false if both quadratic objects contain identical coefficients.
+
 }
 
 #endif // QUADRATIC_H
