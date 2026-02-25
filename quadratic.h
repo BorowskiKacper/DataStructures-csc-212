@@ -60,6 +60,10 @@ namespace my_math
     // Precondition: None
     // Postcondition: The return value is the quadratic expression obtained by multiplying each of q's coefficients by the number r.
 
+    bool operator==(const quadratic &q1, const quadratic &q2);
+    // Precondition: None
+    // Postcondition: Returns true if both quadratic objects contain identical coefficients.
+
 }
 
 #endif // QUADRATIC_H

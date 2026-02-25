@@ -138,4 +138,9 @@ namespace my_math
         return q_new;
     }
 
+    bool operator==(const quadratic &q1, const quadratic &q2)
+    {
+        return q1.get_a() == q2.get_a() && q1.get_b() == q2.get_b() && q1.get_c() == q2.get_c();
+    }
+
 }
