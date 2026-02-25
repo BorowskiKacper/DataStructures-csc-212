@@ -7,30 +7,59 @@
 
 // Any default arguments should be specified in the .h file, not the .cxx file.
 
-class quadratic
+namespace my_math
 {
-public:
-    quadratic(double init_a = 0.0, double init_b = 0.0, double init_c = 0.0);
-    double evaluate(double x);
-    double get_a() const;
-    double get_b() const;
-    double get_c() const;
-    void set_a(double val);
-    void set_b(double val);
-    void set_c(double val);
-    int num_real_roots() const;
-    double first_root() const;
-    double second_root() const;
+    class quadratic
+    {
+    public:
+        quadratic(double init_a = 0.0, double init_b = 0.0, double init_c = 0.0);
+        // Precondition: None
+        // Postcondition: A quadratic object is created with coefficients a, b, and c initialized to init_a, init_b, and init_c respectively.
 
-private:
-    std::vector<double> get_roots() const;
-    double a, b, c;
-};
+        double evaluate(double x) const;
+        // Precondition: None
+        // Postcondition: The quadratic expression is evaluated at x. Returns ax^2 + bx + c.
 
-quadratic operator+(const quadratic &q1, const quadratic &q2);
-// Postcondition: The return value is the quadratic expression obtained by adding q1 and q2. For example, the c coefficient of the return value is the sum of q1's coefficient and q2's coefficient
+        double get_a() const;
+        double get_b() const;
+        double get_c() const;
+        // Precondition (for get_x functions): None
+        // Postcondition (for get_x functions): Returns the value of the respective coefficient x (i.e. a, b, or c).
 
-quadratic operator*(double r, const quadratic &q);
-// Postcondition: The return value is the quadratic expression obtained by multiplying each of q's coefficients by the number r
+        void set_a(double val);
+        void set_b(double val);
+        void set_c(double val);
+        // Precondition (for set_x functions): None
+        // Postcondition (for set_x functions): Updates the value of the respective coefficient (i.e. a, b, or c) to val.
+
+        int getNumRoots() const;
+        // Precondition: None
+        // Postcondition: Returns the number of real roots in the quadratic expression. Returns 0, 1, 2, or 3 (where 3 signifies an infinite number of real roots).
+
+        double getRoot1() const;
+        // Precondition: The quadratic expression has at least one real root.
+        // Postcondition: If there are two real roots, then this function returns the smaller of the two roots. If every value of x is a real root, then this function returns 0.0.
+
+        double getRoot2() const;
+        // Precondition: The quadratic expression has at least one real root.
+        // Postcondition: If there are two real roots, then this function returns the larger of the two roots. If every value of x is a real root, then this function returns 0.0.
+
+    private:
+        std::vector<double> getRoots() const;
+        // Precondition: None
+        // Postcondition: Returns a sorted vector containing the real roots of the quadratic equation. If there are no real roots, the vector is empty.
+
+        double a, b, c;
+    };
+
+    quadratic operator+(const quadratic &q1, const quadratic &q2);
+    // Precondition: None
+    // Postcondition: The return value is the quadratic expression obtained by adding q1 and q2. (e.g. the c coefficient of the return value is the sum of q1's c coefficient and q2's c coefficient)
+
+    quadratic operator*(double r, const quadratic &q);
+    // Precondition: None
+    // Postcondition: The return value is the quadratic expression obtained by multiplying each of q's coefficients by the number r.
+
+}
 
 #endif // QUADRATIC_H
