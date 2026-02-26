@@ -25,6 +25,9 @@ int main()
     cout << "q1 != q2: " << (q1 != q2) << '\n';
 
     cout << "q2: " << q2 << '\n';
+    cout << "Entre 3 numbers as the coefficients of q1: ";
+    cin >> q1;
+    cout << "q1: " << q1 << '\n';
 
     // q1.set_a(0.5);
     // q1.set_b(1.6);

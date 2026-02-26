@@ -3,13 +3,20 @@
 
 #ifndef QUADRATIC_H
 #define QUADRATIC_H
-// ensure to write pre and post conditions
-// 1.	Pay attention to the documentation aspect of the assignment (10%): provides pre/post conditions and use namespace and Macro Guard properly. Again, use newpoint.h and newpoint.cxx listed above as references.
-
-// Any default arguments should be specified in the .h file, not the .cxx file.
 
 namespace my_math
 {
+    // Forward declarations to enable use of I/O friend functions
+    class quadratic;
+
+    std::ostream &operator<<(std::ostream &outs, const quadratic &q);
+    // Precondition: None
+    // Postcondition: Prints the quadratic expression to the output stream.
+
+    std::istream &operator>>(std::istream &ins, quadratic &q);
+    // Precondition: None
+    // Postcondition: Reads three double values from input and sets them as coefficients (a, b, and c) of q.
+
     class quadratic
     {
     public:
@@ -47,12 +54,7 @@ namespace my_math
 
         // Friend functions for I/O
         friend std::ostream &operator<<(std::ostream &outs, const quadratic &q);
-        // Precondition: None
-        // Postcondition: Prints the quadratic expression to the output stream.
-
-        // friend std::istream &operator>>(std::istream &ins, const quadratic &q);
-        // // Precondition: None
-        // // Postcondition: Reads three double values from input and sets them as coefficients (a, b, and c) of q.
+        friend std::istream &operator>>(std::istream &ins, quadratic &q);
 
     private:
         std::vector<double> getRoots() const;

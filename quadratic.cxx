@@ -154,8 +154,14 @@ namespace my_math
 
     ostream &operator<<(ostream &outs, const quadratic &q)
     {
-        outs << "(" << q.get_a() << "x^2) + (" << q.get_b() << "x) + (" << q.get_c() << ")" << endl;
+        outs << "(" << q.a << "x^2) + (" << q.b << "x) + (" << q.c << ")" << endl;
         return outs;
+    }
+
+    istream &operator>>(istream &ins, quadratic &q)
+    {
+        ins >> q.a >> q.b >> q.c;
+        return ins;
     }
 
 }
