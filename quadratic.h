@@ -21,27 +21,22 @@ namespace my_math
     {
     public:
         quadratic(double init_a = 0.0, double init_b = 0.0, double init_c = 0.0);
-        // Precondition: None
         // Postcondition: A quadratic object is created with coefficients a, b, and c initialized to init_a, init_b, and init_c respectively.
 
         double evaluate(double x) const;
-        // Precondition: None
         // Postcondition: The quadratic expression is evaluated at x. Returns ax^2 + bx + c.
 
         double get_a() const;
         double get_b() const;
         double get_c() const;
-        // Precondition (for get_x functions): None
         // Postcondition (for get_x functions): Returns the value of the respective coefficient x (i.e. a, b, or c).
 
         void set_a(double val);
         void set_b(double val);
         void set_c(double val);
-        // Precondition (for set_x functions): None
         // Postcondition (for set_x functions): Updates the value of the respective coefficient (i.e. a, b, or c) to val.
 
         int getNumRoots() const;
-        // Precondition: None
         // Postcondition: Returns the number of real roots in the quadratic expression. Returns 0, 1, 2, or 3 (where 3 signifies an infinite number of real roots).
 
         double getRoot1() const;
@@ -58,26 +53,21 @@ namespace my_math
 
     private:
         std::vector<double> getRoots() const;
-        // Precondition: None
         // Postcondition: Returns a sorted vector containing the real roots of the quadratic equation. If there are no real roots, the vector is empty.
 
         double a, b, c;
     };
 
     quadratic operator+(const quadratic &q1, const quadratic &q2);
-    // Precondition: None
     // Postcondition: The return value is the quadratic expression obtained by adding q1 and q2. (e.g. the c coefficient of the return value is the sum of q1's c coefficient and q2's c coefficient)
 
     quadratic operator*(double r, const quadratic &q);
-    // Precondition: None
     // Postcondition: The return value is the quadratic expression obtained by multiplying each of q's coefficients by the number r.
 
     bool operator==(const quadratic &q1, const quadratic &q2);
-    // Precondition: None
     // Postcondition: Returns true if both quadratic objects contain identical coefficients.
 
     bool operator!=(const quadratic &q1, const quadratic &q2);
-    // Precondition: None
     // Postcondition: Returns false if both quadratic objects contain identical coefficients.
 
 }
