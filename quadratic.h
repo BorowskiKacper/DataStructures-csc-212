@@ -1,8 +1,8 @@
-#include <vector>
-#include <iostream>
-
 #ifndef QUADRATIC_H
 #define QUADRATIC_H
+
+#include <vector>
+#include <iostream>
 
 namespace my_math
 {
