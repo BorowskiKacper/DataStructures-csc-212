@@ -107,8 +107,8 @@ namespace main_savitch_4
         void operator=(const sequence &source);
         // // CONSTANT MEMBER FUNCTIONS
         size_type size() const;
-        // bool is_item() const;
-        // value_type current() const;
+        bool is_item() const;
+        value_type current() const;
 
     private:
         value_type *data;

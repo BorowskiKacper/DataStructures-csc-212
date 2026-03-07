@@ -5,6 +5,7 @@
 #include <cstdlib> // Provides size_t
 #include "sequence2.h"
 #include <algorithm> // Provides std::copy
+#include <cassert>   // Provised assert
 
 // REMOVE THESE MAYBE
 #include <iostream>
@@ -57,12 +58,20 @@ namespace main_savitch_4
         used = source.used;
         copy(source.data, source.data + source.used, data);
     }
-    // // CONSTANT MEMBER FUNCTIONS
+    // CONSTANT MEMBER FUNCTIONS
     sequence::size_type sequence::size() const
     {
         return used;
     }
-    // bool is_item() const;
-    // value_type current() const;
+    bool sequence::is_item() const
+    {
+        return current_index < used;
+    }
+    sequence::value_type sequence::current() const
+    {
+        assert(is_item());
+
+        return data[current_index];
+    }
 
 }

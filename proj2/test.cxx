@@ -9,4 +9,5 @@ using namespace main_savitch_4;
 int main()
 {
     sequence t;
+    t.current();
 }
