@@ -36,11 +36,19 @@ namespace main_savitch_4
     }
     // // MODIFICATION MEMBER FUNCTIONS
     // void resize(size_type new_capacity);
-    // void start();
-    // void advance();
-    // void insert(const value_type &entry);
-    // void attach(const value_type &entry);
-    // void remove_current();
+    void sequence::start()
+    {
+        current_index = 0;
+    }
+    void sequence::advance()
+    {
+        assert(is_item());
+
+        current_index++;
+    }
+    void insert(const value_type &entry);
+    void attach(const value_type &entry);
+    void remove_current();
     void sequence::operator=(const sequence &source)
     {
         if (&source == this)

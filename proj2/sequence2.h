@@ -99,13 +99,13 @@ namespace main_savitch_4
         ~sequence();
         // // MODIFICATION MEMBER FUNCTIONS
         // void resize(size_type new_capacity);
-        // void start();
-        // void advance();
-        // void insert(const value_type &entry);
-        // void attach(const value_type &entry);
-        // void remove_current();
+        void start();
+        void advance();
+        void insert(const value_type &entry);
+        void attach(const value_type &entry);
+        void remove_current();
         void operator=(const sequence &source);
-        // // CONSTANT MEMBER FUNCTIONS
+        // CONSTANT MEMBER FUNCTIONS
         size_type size() const;
         bool is_item() const;
         value_type current() const;
