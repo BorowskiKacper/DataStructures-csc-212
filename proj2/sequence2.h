@@ -95,8 +95,8 @@ namespace main_savitch_4
         static const size_type DEFAULT_CAPACITY = 30;
         // CONSTRUCTORS and DESTRUCTOR
         sequence(size_type initial_capacity = DEFAULT_CAPACITY);
-        // sequence(const sequence &source);
-        // ~sequence();
+        sequence(const sequence &source);
+        ~sequence();
         // // MODIFICATION MEMBER FUNCTIONS
         // void resize(size_type new_capacity);
         // void start();
@@ -104,9 +104,9 @@ namespace main_savitch_4
         // void insert(const value_type &entry);
         // void attach(const value_type &entry);
         // void remove_current();
-        // void operator=(const sequence &source);
+        void operator=(const sequence &source);
         // // CONSTANT MEMBER FUNCTIONS
-        // size_type size() const;
+        size_type size() const;
         // bool is_item() const;
         // value_type current() const;
 
