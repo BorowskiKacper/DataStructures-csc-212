@@ -5,12 +5,9 @@
 #include <cstdlib> // Provides size_t
 #include "sequence2.h"
 #include <algorithm> // Provides std::copy
-#include <cassert>   // Provised assert
+#include <cassert>   // Provides assert
 
-// REMOVE THESE MAYBE
-#include <iostream>
 using std::copy;
-using std::cout;
 
 namespace main_savitch_4
 {
@@ -30,10 +27,12 @@ namespace main_savitch_4
         used = source.used;
         copy(source.data, source.data + source.used, data);
     }
+
     sequence::~sequence()
     {
         delete[] data;
     }
+
     // MODIFICATION MEMBER FUNCTIONS
     void sequence::resize(size_type new_capacity)
     {
@@ -49,16 +48,19 @@ namespace main_savitch_4
         delete[] data;
         data = new_data;
     }
+
     void sequence::start()
     {
         current_index = 0;
     }
+
     void sequence::advance()
     {
         assert(is_item());
 
         current_index++;
     }
+
     void sequence::insert(const value_type &entry)
     {
         // Double capacity or set it to 8 if it runs out.
@@ -85,6 +87,7 @@ namespace main_savitch_4
         }
         used++;
     }
+
     void sequence::attach(const sequence::value_type &entry)
     {
         // Double capacity or set it to 8 if it runs out.
@@ -103,10 +106,7 @@ namespace main_savitch_4
         if (is_item())
         {
             copy(data + current_index, data + used, data + current_index + 1);
-            cout << "is item" << '\n';
-
             data[++current_index] = entry;
-            // current_index
         }
         else
         {
@@ -114,7 +114,18 @@ namespace main_savitch_4
         }
         used++;
     }
-    // void remove_current();
+
+    void sequence::remove_current()
+    {
+        assert(is_item());
+
+        for (int i = current_index + 1; i < used; i++)
+        {
+            data[i - 1] = data[i];
+        }
+        used--;
+    }
+
     void sequence::operator=(const sequence &source)
     {
         if (&source == this)
@@ -132,20 +143,22 @@ namespace main_savitch_4
         used = source.used;
         copy(source.data, source.data + source.used, data);
     }
+
     // CONSTANT MEMBER FUNCTIONS
     sequence::size_type sequence::size() const
     {
         return used;
     }
+
     bool sequence::is_item() const
     {
         return current_index < used;
     }
+
     sequence::value_type sequence::current() const
     {
         assert(is_item());
 
         return data[current_index];
     }
-
 }

@@ -41,4 +41,18 @@ int main()
         t.advance();
     }
     cout << '\n';
+
+    t.start();
+    t.advance();
+    t.advance();
+    cout << "Remove item at index 2" << '\n';
+    t.remove_current();
+    t.start();
+    cout << "Print sequence" << '\n';
+    while (t.is_item())
+    {
+        cout << t.current() << ", ";
+        t.advance();
+    }
+    cout << '\n';
 }
