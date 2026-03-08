@@ -34,8 +34,21 @@ namespace main_savitch_4
     {
         delete[] data;
     }
-    // // MODIFICATION MEMBER FUNCTIONS
-    // void resize(size_type new_capacity);
+    // MODIFICATION MEMBER FUNCTIONS
+    void sequence::resize(size_type new_capacity)
+    {
+        if (new_capacity == capacity)
+        {
+            return;
+        }
+
+        capacity = new_capacity > used ? new_capacity : used;
+
+        sequence::value_type *new_data = new sequence::value_type[capacity];
+        copy(data, data + used, new_data);
+        delete[] data;
+        data = new_data;
+    }
     void sequence::start()
     {
         current_index = 0;
@@ -46,9 +59,34 @@ namespace main_savitch_4
 
         current_index++;
     }
-    void insert(const value_type &entry);
-    void attach(const value_type &entry);
-    void remove_current();
+    void sequence::insert(const value_type &entry)
+    {
+        // Double capacity or set it to 8 if it runs out.
+        if (used >= capacity)
+        {
+            if (capacity <= 0)
+            {
+                resize(8);
+            }
+            else
+            {
+                resize(capacity * 2);
+            }
+        }
+
+        if (is_item())
+        {
+            copy(data + current_index, data + used, data + current_index + 1);
+            data[current_index] = entry;
+        }
+        else
+        {
+            data[current_index] = entry;
+        }
+        used++;
+    }
+    // void attach(const value_type &entry);
+    // void remove_current();
     void sequence::operator=(const sequence &source)
     {
         if (&source == this)

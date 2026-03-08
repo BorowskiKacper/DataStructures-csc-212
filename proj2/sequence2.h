@@ -43,7 +43,7 @@
 //     current item is the item immediately after the original current item.
 //
 //   void insert(const value_type& entry)
-//     Postcondition: A new copy of entry has been inserted in the sequence
+//     Postcondition: First resize if sequence is full. A new copy of entry has been inserted in the sequence
 //     before the current item. If there was no current item, then the new entry
 //     has been inserted at the front of the sequence. In either case, the newly
 //     inserted item is now the current item of the sequence.
@@ -97,8 +97,8 @@ namespace main_savitch_4
         sequence(size_type initial_capacity = DEFAULT_CAPACITY);
         sequence(const sequence &source);
         ~sequence();
-        // // MODIFICATION MEMBER FUNCTIONS
-        // void resize(size_type new_capacity);
+        // MODIFICATION MEMBER FUNCTIONS
+        void resize(size_type new_capacity);
         void start();
         void advance();
         void insert(const value_type &entry);

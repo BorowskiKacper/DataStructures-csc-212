@@ -8,6 +8,36 @@ using namespace main_savitch_4;
 
 int main()
 {
-    sequence t;
-    t.current();
+    sequence t(1);
+    // cout << t.current() << '\n';
+    t.insert(2);
+    cout << t.current() << '\n';
+    t.insert(4);
+    cout << t.current() << '\n';
+    for (int i = 2; i < 6; i++)
+    {
+        t.insert(i);
+        t.advance();
+    }
+
+    t.start();
+    cout << "Print sequence" << '\n';
+    while (t.is_item())
+    {
+        cout << t.current() << ", ";
+        t.advance();
+    }
+    cout << '\n';
+
+    t.start();
+    cout << "insert(8) at beginning" << '\n';
+    t.insert(8);
+
+    cout << "Print sequence" << '\n';
+    while (t.is_item())
+    {
+        cout << t.current() << ", ";
+        t.advance();
+    }
+    cout << '\n';
 }
