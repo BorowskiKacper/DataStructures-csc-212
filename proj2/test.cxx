@@ -30,8 +30,9 @@ int main()
     cout << '\n';
 
     t.start();
-    cout << "insert(8) at beginning" << '\n';
-    t.insert(8);
+    cout << "attach(8) at beginning" << '\n';
+    t.attach(8);
+    t.start();
 
     cout << "Print sequence" << '\n';
     while (t.is_item())

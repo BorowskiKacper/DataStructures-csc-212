@@ -85,7 +85,35 @@ namespace main_savitch_4
         }
         used++;
     }
-    // void attach(const value_type &entry);
+    void sequence::attach(const sequence::value_type &entry)
+    {
+        // Double capacity or set it to 8 if it runs out.
+        if (used >= capacity)
+        {
+            if (capacity <= 0)
+            {
+                resize(8);
+            }
+            else
+            {
+                resize(capacity * 2);
+            }
+        }
+
+        if (is_item())
+        {
+            copy(data + current_index, data + used, data + current_index + 1);
+            cout << "is item" << '\n';
+
+            data[++current_index] = entry;
+            // current_index
+        }
+        else
+        {
+            data[current_index] = entry;
+        }
+        used++;
+    }
     // void remove_current();
     void sequence::operator=(const sequence &source)
     {
