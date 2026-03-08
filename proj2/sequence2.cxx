@@ -26,6 +26,7 @@ namespace main_savitch_4
         capacity = source.capacity;
         used = source.used;
         copy(source.data, source.data + source.used, data);
+        current_index = source.current_index;
     }
 
     sequence::~sequence()
@@ -76,15 +77,15 @@ namespace main_savitch_4
             }
         }
 
-        if (is_item())
+        if (!is_item())
         {
-            copy(data + current_index, data + used, data + current_index + 1);
-            data[current_index] = entry;
+            current_index = 0;
         }
-        else
+        for (size_type i = used; i > current_index; i--)
         {
-            data[current_index] = entry;
+            data[i] = data[i - 1];
         }
+        data[current_index] = entry;
         used++;
     }
 
@@ -105,12 +106,15 @@ namespace main_savitch_4
 
         if (is_item())
         {
-            copy(data + current_index, data + used, data + current_index + 1);
+            for (size_type i = used; i > current_index; i--)
+            {
+                data[i] = data[i - 1];
+            }
             data[++current_index] = entry;
         }
         else
         {
-            data[current_index] = entry;
+            data[used] = entry;
         }
         used++;
     }
@@ -119,7 +123,7 @@ namespace main_savitch_4
     {
         assert(is_item());
 
-        for (int i = current_index + 1; i < used; i++)
+        for (size_type i = current_index + 1; i < used; i++)
         {
             data[i - 1] = data[i];
         }
@@ -142,6 +146,7 @@ namespace main_savitch_4
 
         used = source.used;
         copy(source.data, source.data + source.used, data);
+        current_index = source.current_index;
     }
 
     // CONSTANT MEMBER FUNCTIONS
