@@ -115,6 +115,7 @@ namespace main_savitch_4
         else
         {
             data[used] = entry;
+            current_index = used;
         }
         used++;
     }
