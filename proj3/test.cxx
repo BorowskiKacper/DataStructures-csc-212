@@ -1,7 +1,7 @@
 #include <iostream>
 #include "newnode2.h"
 
-// print linked list
+// Helper function to print linked lists
 template <class Item>
 std::ostream &operator<<(std::ostream &outs, csc212_proj2::node<Item> *head_ptr)
 {
