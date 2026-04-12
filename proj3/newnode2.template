@@ -129,26 +129,74 @@ namespace csc212_proj2
    template <class Item>
    size_t list_occurrences(const node<Item>* head_ptr, const Item& target)
    {
-       return(0);
+        size_t count = 0;
+
+        for(node<Item>* cursor = head_ptr; cursor != nullptr; cursor = cursor->link())
+        {
+            if(cursor->data() == target) 
+            {
+                count++;
+            }
+        }
+
+        return count;
    }
    
    template <class Item>
    void list_tail_attach(node<Item>*& head_ptr, const Item& entry)
    {
-      
+        node<Item>* new_node = new node(entry);
+
+        if(head_ptr == nullptr)
+        {
+            return new_node;
+        }
+        else 
+        {
+            node<Item>* cursor = head_ptr;
+            while(cursor->link() != nullptr)
+            {
+                cursor = cursor->link();
+            }
+            cursor->link() = new_node;
+        }
    }
 
 
     template <class Item>
     void list_tail_remove(node<Item>*& head_ptr)
     {
-    
+        if(head_ptr->link() == nullptr)
+        {
+            delete head_ptr;
+            return nullptr;
+        }
+
+        node<Item>* prev = head_ptr, *cursor = head_ptr->link();
+        
+        while(cursor->link() != nullptr)
+        {
+            prev->link() = nullptr;
+        }
+        delete cursor;
     }
 
     template <class Item>
     node<Item>* list_copy_front(const node<Item>* source_ptr, std::size_t n)
     {
-        return NULL;
+        node<Item>* dummy = new node();
+        node<Item>* copy = dummy;
+
+        for(std::size_t i = 0; i < n; i++)
+        {
+            copy->link() = new node(source_ptr->data());
+            copy = copy->link();
+            source_ptr = source_ptr->link();
+        }
+
+        node<Item>* head_copy_ptr = dummy->link();
+        delete dummy;
+        return head_copy_ptr;
     }
 
 
