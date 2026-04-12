@@ -170,14 +170,18 @@ namespace csc212_proj2
         if(head_ptr->link() == nullptr)
         {
             delete head_ptr;
+            head_ptr = nullptr;
+            return;
         }
 
         node<Item>* prev = head_ptr, *cursor = head_ptr->link();
         
         while(cursor->link() != nullptr)
         {
-            prev->set_link(nullptr);
+            prev = cursor;
+            cursor = cursor->link();
         }
+        prev->set_link(nullptr);
         delete cursor;
     }
 
