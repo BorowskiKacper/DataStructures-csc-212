@@ -131,7 +131,8 @@ namespace csc212_proj2
    {
         size_t count = 0;
 
-        for(node<Item>* cursor = head_ptr; cursor != nullptr; cursor = cursor->link())
+        
+        for(const node<Item>* cursor = head_ptr; cursor != nullptr; cursor = cursor->link())
         {
             if(cursor->data() == target) 
             {
@@ -149,7 +150,7 @@ namespace csc212_proj2
 
         if(head_ptr == nullptr)
         {
-            return new_node;
+            head_ptr = new_node;
         }
         else 
         {
@@ -158,7 +159,7 @@ namespace csc212_proj2
             {
                 cursor = cursor->link();
             }
-            cursor->link() = new_node;
+            cursor->set_link(new_node);
         }
    }
 
@@ -169,14 +170,13 @@ namespace csc212_proj2
         if(head_ptr->link() == nullptr)
         {
             delete head_ptr;
-            return nullptr;
         }
 
         node<Item>* prev = head_ptr, *cursor = head_ptr->link();
         
         while(cursor->link() != nullptr)
         {
-            prev->link() = nullptr;
+            prev->set_link(nullptr);
         }
         delete cursor;
     }
@@ -184,12 +184,12 @@ namespace csc212_proj2
     template <class Item>
     node<Item>* list_copy_front(const node<Item>* source_ptr, std::size_t n)
     {
-        node<Item>* dummy = new node();
+        node<Item>* dummy = new node(Item());
         node<Item>* copy = dummy;
 
         for(std::size_t i = 0; i < n; i++)
         {
-            copy->link() = new node(source_ptr->data());
+            copy->set_link(new node(source_ptr->data()));
             copy = copy->link();
             source_ptr = source_ptr->link();
         }
